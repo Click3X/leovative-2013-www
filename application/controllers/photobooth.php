@@ -2,26 +2,29 @@
 
 class Photobooth extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->load->view('photobooth_view');
 	}
-}
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+	public function save()
+	{
+		/* ------------------------------------------------
+		| POSTDATA should contain these variables:
+		| base64data (b64 binary)
+		| screenname (twitter account)
+		| tag        (twitter hashtag)
+		|--------------------------------------------------*/
+
+		$data = $this->input->post();
+
+		//Composite image and get a image path
+		$image_path = $this->composite_image->base64($data);
+
+		//Send mail with attachment
+		$this->send_mail->send($image_path);
+
+		//Retweet message to user
+		$this->twitter->retweet($image_path, $data['screenname']);
+	}
+}

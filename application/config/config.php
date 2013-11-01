@@ -14,7 +14,10 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']		= '';
+$config['export_url']	= 'export/';
+$config['template_url']	= 'templates/';
+
 
 /*
 |--------------------------------------------------------------------------

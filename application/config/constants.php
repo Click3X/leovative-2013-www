@@ -14,6 +14,19 @@
 |
 */
 
+define('EMAIL_FROM','sean@click3x.com');
+define('EMAIL_TO','ohsiwon@gmail.com');
+
+define('EMAIL_SUBJECT','Click 3X mail delivery');
+define('EMAIL_MESSAGE','Here\'s a new image from Click 3x.');
+
+define('TWITTER_CONSUMER_KEY','0Lq12FPHlTgvl2Q5gnHBQ');
+define('TWITTER_CONSUMER_SECRET', 'vjda2nMXZIfCDoSqFcvQIhlUl3CwKq2XvYwHuIo8');
+define('TWITTER_TOKEN', '396970137-aHRyebmtXzaBMWCKBHrZiF9qVR67RfYIbqS9guZw');
+define('TWITTER_TOKEN_SECRET', 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51');
+
+define('TWITTER_MENTION_MESSAGE', 'This is twitter mention message.');
+
 define('GA_ACCOUNT', "UA-XXXXX-X");
 
 define('FILE_READ_MODE', 0644);
