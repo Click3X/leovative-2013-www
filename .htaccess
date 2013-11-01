@@ -1,0 +1,29 @@
+SetEnvIf Host click3x SITE=c3x
+SetEnvIf Host clickfiremedia SITE=cfm
+SetEnvIf Host reason2be SITE=r2b
+
+SetEnvIf Host click3x.com ENVIRONMENT=production
+SetEnvIf Host clickfiremedia.com ENVIRONMENT=production
+SetEnvIf Host reason2be.com ENVIRONMENT=production
+
+SetEnvIf Host dev$ ENVIRONMENT=local
+SetEnvIf Host staging ENVIRONMENT=staging
+
+AddType video/ogg   .ogv
+AddType video/mp4   .mp4
+AddType video/webm  .webm
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+     ErrorDocument 404 /index.php
+</IfModule>
