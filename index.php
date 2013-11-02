@@ -24,6 +24,7 @@ $host 	=  	$_SERVER['HTTP_HOST'];
 
 switch ($host) {
 	case 'leovative.dev':
+	case 'leo.dev':
 		define('ENVIRONMENT', 'development');
 		break;
 
