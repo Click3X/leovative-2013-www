@@ -14,10 +14,10 @@
 |
 */
 
-define('EMAIL_FROM','sean@click3x.com');
-define('EMAIL_TO','ohsiwon@gmail.com');
+define('EMAIL_FROM','noreply@click3x.com');
+define('EMAIL_TO','jaytord@mac.com');
 
-define('EMAIL_SUBJECT','Click 3X mail delivery');
+define('EMAIL_SUBJECT','#leovative');
 define('EMAIL_MESSAGE','Here\'s a new image from Click 3x.');
 
 define('TWITTER_CONSUMER_KEY','0Lq12FPHlTgvl2Q5gnHBQ');

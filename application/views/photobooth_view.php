@@ -47,11 +47,11 @@
             params.allowscriptaccess = "sameDomain";
             params.allowfullscreen = "true";
             var attributes = {};
-            attributes.id = "Lenovative";
-            attributes.name = "Lenovative";
+            attributes.id = "Leovative";
+            attributes.name = "Leovative";
             attributes.align = "middle";
             swfobject.embedSWF(
-                "<?= base_url(); ?>swf/Lenovative.swf", "flashContent", 
+                "<?= base_url(); ?>swf/Leovative.swf", "flashContent", 
                 "100%", "100%", 
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
@@ -77,14 +77,14 @@
         </div>
         
         <noscript>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="Lenovative">
-                <param name="movie" value="<?= base_url(); ?>swf/Lenovative.swf" />
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="Leovative">
+                <param name="movie" value="<?= base_url(); ?>swf/Leovative.swf" />
                 <param name="quality" value="high" />
                 <param name="bgcolor" value="#ffffff" />
                 <param name="allowScriptAccess" value="sameDomain" />
                 <param name="allowFullScreen" value="true" />
                 <!--[if !IE]>-->
-                <object type="application/x-shockwave-flash" data="<?= base_url(); ?>swf/Lenovative.swf" width="100%" height="100%">
+                <object type="application/x-shockwave-flash" data="<?= base_url(); ?>swf/Leovative.swf" width="100%" height="100%">
                     <param name="quality" value="high" />
                     <param name="bgcolor" value="#ffffff" />
                     <param name="allowScriptAccess" value="sameDomain" />
