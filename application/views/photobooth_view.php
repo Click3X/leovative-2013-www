@@ -36,11 +36,12 @@
             
         <script type="text/javascript" src="<?= base_url(); ?>js/swfobject.js"></script>
         <script type="text/javascript">
+            var base_url = "<?= base_url(); ?>";
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.4.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
             var xiSwfUrlStr = "<?= base_url(); ?>swf/playerProductInstall.swf";
-            var flashvars = {};
+            var flashvars = {base_url:"<?= base_url(); ?>"};
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";
