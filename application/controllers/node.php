@@ -16,7 +16,7 @@ class Node extends CI_Controller {
 			$tag  =$tags[0];
 
 			//Composite image and get a image path
-			$image_path = $this->composite_image->photo($_GET['image_url']);
+			$image_path = $this->composite_image->generate($_GET['image_url'], time(), $tag);
 
 			//Send mail with attachment
 			$this->send_mail->send($image_path);

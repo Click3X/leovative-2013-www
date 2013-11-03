@@ -15,13 +15,25 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/main.css">
 
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+         <script src="http://leo.dev:8080/socket.io/socket.io.js"></script>
+        <script>
+          // var socket = io.connect('http://leovative-leovative2013.rhcloud.com');
+          var socket = io.connect('http://leo.dev:8080');
+          socket.on('new_twit', function (data) {            
+            // $('<img src="' + data + '"/>').prependTo($('body'));
+            $('#imgframe').attr('src', data);            
+          });
+        </script>
+
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <p>This is galelry view</p>
+        <p>Gallery is on</p>
+        <img id="imgframe" src=""/>
         </div> <!-- /container -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
