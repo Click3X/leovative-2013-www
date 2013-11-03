@@ -12,24 +12,20 @@ class Composite_Image
 	public function base64($data = null)
 	{
 		if(!empty($data)){
-			$name 		= 'temp_' . time() .".jpg";
+			$name 		= 'temp_' . time() .".png";
 			$filepath 	= config_item('export_url') . $name;
 			
 			// Save image to server
-			$img = imagecreatefromstring(base64_decode($data['base64data']));
-			ob_start(); 
-			imagejpeg($img, null, 80);
-			$output = ob_get_contents(); 
-			ob_end_clean ();
-			file_put_contents( $filepath , $output );
-			unset($img);
-			unset($output);
+			$imgdata = base64_decode($data['base64data']);
+
+			file_put_contents($filepath, $imgdata);
+			unset($imgdata);
 
 			//composite photo with template
 			$image_path = $this->generate($filepath, time(), $data['tag']);
 			
 			// //Delete temporary file
-			unlink($filepath);
+			//unlink($filepath);
 			return $image_path;
 		}
 		else{
@@ -39,8 +35,8 @@ class Composite_Image
 
 	public function generate( $image, $created_time, $tag)
 	{					
-		$img_length 		= 520; //Width and height
-		$img_padding		= 40;  //source image xy padding
+		$img_length 		= 560; //Width and height
+		$img_padding		= 20;  //source image xy padding
 		$offset				= array('x'=>0,'y'=>0);
 		$file_folder		= 'export/';	
 		$name 				= $tag. '_' . $created_time.".jpg";
@@ -76,28 +72,32 @@ class Composite_Image
 		 	break;
 		}
 
-		$canvas = imagecreatetruecolor($img_length, $img_length);
+		//resize src image
+		$resized_src_img = imagecreatetruecolor($img_length, $img_length);
+		imagecopyresampled($resized_src_img, $src_img, $offset['x'], $offset['y'],0, 0, $w, $h, $o_w, $o_h);
 
-		//Calculate offset value
-		if($o_ratio > 1){
-			//Landscape
-			$offset['x'] = -($w - $img_length)/2;
-		}
-		else if($o_ratio < 1){
-			//Portrait
-			$offset['y'] = -($h - $img_length)/2;
-		}
+		//load template image
+		$tpl_img = imagecreatefrompng( base_url() . config_item('template_url').$tag.'.png' );
 
-		imagecopyresampled($canvas, $src_img, $offset['x'], $offset['y'],0, 0, $w, $h, $o_w, $o_h);
-		$tpl_img = imagecreatefromjpeg( base_url() . config_item('template_url').$tag.'.jpg' );
+		//create base image to plop everythin into
+		$base = imagecreatetruecolor( imagesx($tpl_img), imagesy($tpl_img) );
 
-		//merge
-		imagecopyresized($tpl_img, $canvas,$img_padding, $img_padding,0,0, imagesx($canvas),imagesy($canvas),imagesx($canvas),imagesy($canvas) );
+		//merge resized src into base
+		imagecopymerge( $base , $resized_src_img , $img_padding , 155 , 0 , 0 , imagesx($resized_src_img), imagesy($resized_src_img), 100);
+
+		//merge template into base
+		imagecopyresampled($base , $tpl_img,0,0,0,0, imagesx($tpl_img), imagesy($tpl_img),imagesx($tpl_img), imagesy($tpl_img));
 
 		//save image to folder
-		imagejpeg($tpl_img, $save_location);
+		header('Content-Type: image/jpg');
+		imagejpeg($base, $save_location);
+
+		//kill stuff
+		imagedestroy($base);
 		imagedestroy($src_img);
 		imagedestroy($tpl_img);		
+
+		//return file location
 		return $save_location;		
 	}	
 
