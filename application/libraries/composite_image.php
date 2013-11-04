@@ -50,7 +50,7 @@ class Composite_Image
 			file_put_contents($gif_filepath, $gif->GetAnimation());
 
 			//composite photo with template
-			$image_path = $this->generate($png_filepath, $ts, $data['tag'], 'photobooth');
+			$image_path = $this->generate($png_filepath, $ts, 'leovative', 'photobooth');
 
 			$image_path[2] = $gif_filepath;
 			return $image_path;
@@ -62,6 +62,9 @@ class Composite_Image
 
 	public function generate( $image, $created_time, $tag, $type)
 	{					
+		//static
+		$tag = 'leovative';
+
 		$print_img_length 			= 560; //Width and height
 		$print_img_padding			= 20;  //source image xy padding
 
