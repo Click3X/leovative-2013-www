@@ -16,13 +16,13 @@ class Node extends CI_Controller {
 			$tag  =$tags[0];
 
 			//Composite image and get a image path
-			$image_path = $this->composite_image->generate($_GET['image_url'], time(), $tag);
+			$image_path = $this->composite_image->generate($_GET['image_url'], time(), $tag, 'twitter');
 
 			//Send mail with attachment
-			$this->send_mail->send($image_path);
+			$this->send_mail->send($image_path[0]);
 
 			//Retweet message to user
-			$this->twitter->retweet($image_path, $_GET['screen_name']);
+			$this->twitter->retweet($image_path[1], $_GET['screen_name']);
 		}
 		else{
 			echo 'Invalid access';

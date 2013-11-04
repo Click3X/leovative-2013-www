@@ -16,6 +16,7 @@
 
 define('EMAIL_FROM','noreply@click3x.com');
 define('EMAIL_TO','jaytord@mac.com');
+// define('EMAIL_TO','ohsiwon@gmail.com');
 
 define('EMAIL_SUBJECT','#leovative');
 define('EMAIL_MESSAGE','Here\'s a new image from Click 3x.');

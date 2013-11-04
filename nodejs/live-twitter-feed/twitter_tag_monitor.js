@@ -8,7 +8,7 @@ var twit = new twitter({
   access_token_secret: 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51'
 });
 
-var $tags = ['#this_is_test','#this_is_test2'];
+var $tags = ['#c3xdev'];
 // var $tags = ['#photo'];
 var $valid_tags = [];
 

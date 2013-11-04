@@ -11,7 +11,7 @@
 			<br><br>
 			screen name: <input id="screenname" name="screenname" type="text" value="honowis"/>
 			<br><br>
-			tag: <input id="tag" name="tag" type="text" value="this_is_test"/>
+			tag: <input id="tag" name="tag" type="text" value="c3xdev"/>
 			<br><br>
 			<input type="submit" value="Submit"/>
 		</form>

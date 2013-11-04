@@ -22,9 +22,11 @@ class Photobooth extends CI_Controller {
 		$image_path = $this->composite_image->base64($data);
 
 		//Send mail with attachment
-		$this->send_mail->send($image_path);
+		// $this->send_mail->send($image_path[0]);
 
 		//Retweet message to user
-		//$this->twitter->retweet($image_path, $data['screenname']);
+		// $this->twitter->retweet($image_path[1], $data['screenname']);
+
+		echo $image_path[2];
 	}
 }

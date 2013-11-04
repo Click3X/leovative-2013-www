@@ -12,20 +12,22 @@ class Composite_Image
 	public function base64($data = null)
 	{
 		if(!empty($data)){
-			$name 		= 'temp_' . time() .".png";
+
+			$ts = time();
+
+			$name 		= 'photobooth_' . $ts .".png";
 			$filepath 	= config_item('export_url') . $name;
 			
-			// Save image to server
+			// Save photobooth image to server
 			$imgdata = base64_decode($data['base64data']);
-
 			file_put_contents($filepath, $imgdata);
 			unset($imgdata);
 
 			//composite photo with template
-			$image_path = $this->generate($filepath, time(), $data['tag']);
+			$image_path = $this->generate($filepath, $ts, $data['tag'], 'photobooth');
 			
-			// //Delete temporary file
 			//unlink($filepath);
+			$image_path[2] = $filepath;
 			return $image_path;
 		}
 		else{
@@ -33,18 +35,25 @@ class Composite_Image
 		}
 	}
 
-	public function generate( $image, $created_time, $tag)
+	public function generate( $image, $created_time, $tag, $type)
 	{					
-		$img_length 		= 560; //Width and height
-		$img_padding		= 20;  //source image xy padding
-		$offset				= array('x'=>0,'y'=>0);
-		$file_folder		= 'export/';	
-		$name 				= $tag. '_' . $created_time.".jpg";
-		$save_location 		= $file_folder . $name;
+		$print_img_length 			= 560; //Width and height
+		$print_img_padding			= 20;  //source image xy padding
+
+		$tweet_img_length 			= 600; //Width and height
+
+		$offset						= array('x'=>0,'y'=>0);
+		$file_folder				= 'export/';	
+		
+		$print_filename 			= $tag. '_' . $type . '_print_' . $created_time.".jpg";
+		$print_save_location 		= $file_folder . $print_filename;
+
+		$tweet_filename 			= $tag. '_' . $type . '_tweet_' . $created_time.".jpg";
+		$tweet_save_location 		= $file_folder . $tweet_filename;
 
 		// Set a min height and width
-		$w  = $img_length;
-		$h  = $img_length;
+		$w  = $print_img_length;
+		$h  = $print_img_length;
 
 		// Get new dimensions
 		list($o_w, $o_h) = getimagesize($image);
@@ -55,6 +64,16 @@ class Composite_Image
 		   $w = $h * $o_ratio;
 		} else {
 		   $h = $w / $o_ratio;
+		}
+
+		//Calculate offset value
+		if($o_ratio > 1){
+			//Landscape
+			$offset['x'] = -($w - $print_img_length)/2;
+		}
+		else if($o_ratio < 1){
+			//Portrait
+			$offset['y'] = -($h - $print_img_length)/2;
 		}
 
 		//Create image by file extension and resmaple
@@ -72,33 +91,61 @@ class Composite_Image
 		 	break;
 		}
 
+
+		//PRINT PART
+
 		//resize src image
-		$resized_src_img = imagecreatetruecolor($img_length, $img_length);
+		$resized_src_img = imagecreatetruecolor($print_img_length, $print_img_length);
 		imagecopyresampled($resized_src_img, $src_img, $offset['x'], $offset['y'],0, 0, $w, $h, $o_w, $o_h);
 
 		//load template image
-		$tpl_img = imagecreatefrompng( base_url() . config_item('template_url').$tag.'.png' );
+		$print_tpl_img = imagecreatefrompng( base_url() . config_item('template_url') . $tag . '_' . $type . '_print.png' );
 
 		//create base image to plop everythin into
-		$base = imagecreatetruecolor( imagesx($tpl_img), imagesy($tpl_img) );
+		$base = imagecreatetruecolor( imagesx($print_tpl_img), imagesy($print_tpl_img) );
 
 		//merge resized src into base
-		imagecopymerge( $base , $resized_src_img , $img_padding , 155 , 0 , 0 , imagesx($resized_src_img), imagesy($resized_src_img), 100);
+		imagecopymerge( $base , $resized_src_img , $print_img_padding , 155 , 0 , 0 , imagesx($resized_src_img), imagesy($resized_src_img), 100);
 
 		//merge template into base
-		imagecopyresampled($base , $tpl_img,0,0,0,0, imagesx($tpl_img), imagesy($tpl_img),imagesx($tpl_img), imagesy($tpl_img));
+		imagecopyresampled($base , $print_tpl_img,0,0,0,0, imagesx($print_tpl_img), imagesy($print_tpl_img),imagesx($print_tpl_img), imagesy($print_tpl_img));
 
 		//save image to folder
 		header('Content-Type: image/jpg');
-		imagejpeg($base, $save_location);
+		imagejpeg($base, $print_save_location);
+
+
+		//TWITTER PART
+
+		//get offset diff
+		$diff = $tweet_img_length / $print_img_length;
+
+		//load template image
+		$tweet_tpl_img = imagecreatefrompng( base_url() . config_item('template_url') . $tag . '_' . $type . '_tweet.png' );
+
+		//resize src image
+		$base = imagecreatetruecolor($tweet_img_length, $tweet_img_length);
+		imagecopyresampled($base, $src_img, $offset['x']*$diff, $offset['y']*$diff,0, 0, $w*$diff, $h*$diff, $o_w, $o_h);
+		
+		//merge template into base
+		imagecopyresampled($base , $tweet_tpl_img,0,0,0,0, imagesx($tweet_tpl_img), imagesy($tweet_tpl_img),imagesx($tweet_tpl_img), imagesy($tweet_tpl_img));
+
+		//save image to folder
+		header('Content-Type: image/jpg');
+		imagejpeg($base, $tweet_save_location);
+
 
 		//kill stuff
 		imagedestroy($base);
 		imagedestroy($src_img);
-		imagedestroy($tpl_img);		
+		imagedestroy($print_tpl_img);
+		imagedestroy($tweet_tpl_img);
 
 		//return file location
-		return $save_location;		
+		$result[0] = $print_save_location;
+		$result[1] = $tweet_save_location;
+
+		return $result;
 	}	
 
 }
