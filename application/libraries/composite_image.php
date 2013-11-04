@@ -12,22 +12,47 @@ class Composite_Image
 	public function base64($data = null)
 	{
 		if(!empty($data)){
-
+		
 			$ts = time();
+			$pngname 		= 'photobooth_' . $ts .".png";
+			$png_filepath 	= config_item('export_url') . $pngname;
 
-			$name 		= 'photobooth_' . $ts .".png";
-			$filepath 	= config_item('export_url') . $name;
+			$gifname 		= 'photobooth_' . $ts .".gif";
+			$gif_filepath 	= config_item('export_url') . $gifname;
 			
 			// Save photobooth image to server
 			$imgdata = base64_decode($data['base64data']);
-			file_put_contents($filepath, $imgdata);
+			file_put_contents($png_filepath, $imgdata);
 			unset($imgdata);
+			
+			//Create GIF
+			$frames;
+			$framed;
+			$image   = imagecreatefrompng($png_filepath);
+			$num_img = 0;
+			
+			while ($num_img < 4) {			
+				$x = -($num_img%2) * 512;
+				$y = ($num_img>=2) ? -512:0;
+				$block = imagecreatetruecolor(500, 500);
+				imagecopyresampled($block, $image, $x, $y, 0, 0, imagesx($image), imagesy($image), imagesx($image), imagesy($image));
+				ob_start();
+				imagegif($block);
+				$frames[]=ob_get_contents();
+				$framed[]=20;
+				ob_end_clean();
+				$num_img++;
+			}
+
+			// Generate the animated gif and output to screen.
+			include('./GIFEncoder.class.php');
+			$gif = new GIFEncoder($frames,$framed,0,2,0,0,0,'bin');
+			file_put_contents($gif_filepath, $gif->GetAnimation());
 
 			//composite photo with template
-			$image_path = $this->generate($filepath, $ts, $data['tag'], 'photobooth');
-			
-			//unlink($filepath);
-			$image_path[2] = $filepath;
+			$image_path = $this->generate($png_filepath, $ts, $data['tag'], 'photobooth');
+
+			$image_path[2] = $gif_filepath;
 			return $image_path;
 		}
 		else{
@@ -140,6 +165,7 @@ class Composite_Image
 		imagedestroy($src_img);
 		imagedestroy($print_tpl_img);
 		imagedestroy($tweet_tpl_img);
+		unlink($image);
 
 		//return file location
 		$result[0] = $print_save_location;

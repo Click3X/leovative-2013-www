@@ -59,6 +59,17 @@
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
             swfobject.createCSS("#flashContent", "display:block;text-align:left;");
         </script>
+
+        <!--socket.io-->
+        <script src="http://leo.dev:8080/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            var socket = io.connect('http://leo.dev:8080');
+            function onExportComplete(_res){
+                socket.emit('new_photobooth_photo', _res);
+            };
+        </script>
+
+
     </head>
     <body>
         <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 

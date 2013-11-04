@@ -14,16 +14,83 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/main.css">
 
+        <style type="text/css">
+
+            #photos div{
+                display: block;
+                width: 500px;
+                height: 500px;
+                background-size: contain;
+                background-position: center center;
+            }
+
+        </style>
+
+
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-         <script src="http://leo.dev:8080/socket.io/socket.io.js"></script>
+        <script src="http://leo.dev:8080/socket.io/socket.io.js"></script>
         <script>
-          // var socket = io.connect('http://leovative-leovative2013.rhcloud.com');
-          var socket = io.connect('http://leo.dev:8080');
-          socket.on('new_twit', function (data) {            
-            // $('<img src="' + data + '"/>').prependTo($('body'));
-            $('#imgframe').attr('src', data);            
-          });
+
+            //SOCKET STUFF
+
+            // var socket = io.connect('http://leovative-leovative2013.rhcloud.com');
+            var socket = io.connect('http://leo.dev:8080');
+            socket.on('new_twit', function (img_url) {            
+            // $('<img src="' + img_url + '"/>').prependTo($('body'));
+            // $('#imgframe').attr('src', img_url);
+                queue.push(img_url);
+                if(!queProcess) loadQue();
+            });
+
+
+            //Animation stuff
+            var queue = [];
+            var queProcess = false;
+
+
+            function loadQue(){
+                queProcess = true;
+                var _url = queue[0];
+                
+                var $img = $('<img/>');
+                $img.load(function(){
+                    
+
+                    var $frame = $('<div/>').css({'opacity':0, 'background-image': 'url(' + _url + ')' })
+
+
+                    $frame.prependTo($('#photos')).animate({'opacity':1}, 1000, function(){
+                        cleanup();
+
+                        if(queue.length > 0){
+                            console.log('load more queue');                
+                            loadQue();
+                        }
+                        else{
+                            queProcess = false;
+                        }
+                    });
+                    
+
+                });
+
+                $img.attr('src',_url);
+            }
+
+            function cleanup(){
+
+                var $photos = $('#photos');
+
+                queue.shift();
+
+
+                if($photos.children().length > 3 ){
+                    $photos.children(':last').remove();
+                }
+            }
+
+
         </script>
 
     </head>
@@ -33,8 +100,8 @@
         <![endif]-->
 
         <p>Gallery is on</p>
-        <img id="imgframe" src=""/>
-        </div> <!-- /container -->
+        
+        <div id="photos"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url(); ?>js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
