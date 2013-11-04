@@ -62,9 +62,6 @@ class Composite_Image
 
 	public function generate( $image, $created_time, $tag, $type)
 	{					
-		//static
-		$tag = 'leovative';
-
 		$print_img_length 			= 560; //Width and height
 		$print_img_padding			= 20;  //source image xy padding
 
@@ -73,10 +70,10 @@ class Composite_Image
 		$offset						= array('x'=>0,'y'=>0);
 		$file_folder				= 'export/';	
 		
-		$print_filename 			= $tag. '_' . $type . '_print_' . $created_time.".jpg";
+		$print_filename 			= $type . '_print_' . $created_time.".jpg";
 		$print_save_location 		= $file_folder . $print_filename;
 
-		$tweet_filename 			= $tag. '_' . $type . '_tweet_' . $created_time.".jpg";
+		$tweet_filename 			= $type . '_tweet_' . $created_time.".jpg";
 		$tweet_save_location 		= $file_folder . $tweet_filename;
 
 		// Set a min height and width
@@ -127,7 +124,7 @@ class Composite_Image
 		imagecopyresampled($resized_src_img, $src_img, $offset['x'], $offset['y'],0, 0, $w, $h, $o_w, $o_h);
 
 		//load template image
-		$print_tpl_img = imagecreatefrompng( base_url() . config_item('template_url') . $tag . '_' . $type . '_print.png' );
+		$print_tpl_img = imagecreatefrompng( base_url() . config_item('template_url') . $type . '_print_template.png' );
 
 		//create base image to plop everythin into
 		$base = imagecreatetruecolor( imagesx($print_tpl_img), imagesy($print_tpl_img) );
@@ -149,7 +146,7 @@ class Composite_Image
 		$diff = $tweet_img_length / $print_img_length;
 
 		//load template image
-		$tweet_tpl_img = imagecreatefrompng( base_url() . config_item('template_url') . $tag . '_' . $type . '_tweet.png' );
+		$tweet_tpl_img = imagecreatefrompng( base_url() . config_item('template_url') . $type . '_tweet_template.png' );
 
 		//resize src image
 		$base = imagecreatetruecolor($tweet_img_length, $tweet_img_length);

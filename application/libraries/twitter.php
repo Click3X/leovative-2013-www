@@ -9,7 +9,7 @@ class Twitter
         $this->CI =& get_instance();
 	}
 
-	public function retweet($image_path,$screen_name)
+	public function retweet($image_path,$screen_name, $hashtag = '')
 	{				
 		//Load helper
 		$this->CI->load->helper('TwitterAPIExchange');
@@ -27,7 +27,7 @@ class Twitter
 		
 		$mention_to = (!empty($screen_name)) ? '@' . $screen_name . ' ' : '';
 
-		$status = $mention_to . TWITTER_MENTION_MESSAGE;
+		$status = $mention_to . TWITTER_MENTION_MESSAGE . $hashtag;
 
 		$postfields = array(
     		'media[]' => "@{$image_path}",

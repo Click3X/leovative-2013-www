@@ -12,8 +12,8 @@ class Node extends CI_Controller {
 			
 			//Tag can be multiple value. 
 			//Split them and use the first value for now.
-			$tags = explode(',', $_GET['tag']) ;
-			$tag  =$tags[0];
+			// $tags = explode(',', $_GET['tag']) ;
+			// $tag  =$tags[0];
 
 			//Composite image and get a image path
 			$image_path = $this->composite_image->generate($_GET['image_url'], time(), $tag, 'twitter');
