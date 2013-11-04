@@ -15,7 +15,7 @@
 */
 
 define('EMAIL_FROM','noreply@click3x.com');
-define('EMAIL_TO','jaytord@mac.com');
+define('EMAIL_TO','cfmdev@icloud.com');
 // define('EMAIL_TO','ohsiwon@gmail.com');
 
 define('EMAIL_SUBJECT','#leovative');

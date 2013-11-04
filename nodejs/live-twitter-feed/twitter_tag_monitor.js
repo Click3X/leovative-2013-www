@@ -9,7 +9,7 @@ var twit = new twitter({
 });
 
 var $tags = ['#c3xdev'];
-// var $tags = ['#photo'];
+// var $tags = ['photo'];
 var $valid_tags = [];
 
 console.log('--> Twitter hashtag monitor start: ', $tags);
@@ -32,7 +32,7 @@ function streamListener(stream){
         // console.log('Content: ' + data['text']);
         // console.log('Image: ' + data['entities']['media'][0].media_url);
         // console.log(util.inspect(data));
-        postData(data);
+        // postData(data);
  
         //Send data through socket
         io.sockets.in('room').emit('new_twit', data['entities']['media'][0].media_url);

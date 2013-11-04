@@ -21,7 +21,14 @@ function defeault_functions(){
 	  console.log('---> we have socket connection');
 	  console.log('---> Joining room');
 	  socket.join('room');  
+
+	//Get a response from photobooth and broadcast
+	socket.on("new_photobooth_photo", function(url) {
+	    io.sockets.in('room').emit('new_twit', url);
 	});
+
+});
+
 }
 
 function controller_functions(){
