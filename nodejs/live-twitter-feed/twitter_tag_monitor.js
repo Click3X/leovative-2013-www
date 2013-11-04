@@ -9,7 +9,7 @@ var twit = new twitter({
 });
 
 // var $tags = ['#c3xdev'];
-var $tags = ['photo'];
+var $tags = ['food'];
 var $valid_tags = [];
 
 console.log('--> Twitter hashtag monitor start: ', $tags);

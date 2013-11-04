@@ -26,10 +26,16 @@
                 width: 400px;
                 height: 0;
                 /*margin: 20px;*/
-                border: 1px #222 solid;
+                border: 1px #666 solid;
                 background-color: #222;
                 background-size: cover;
                 background-position: center center;
+            }
+
+            #photos div img {
+                position: absolute;
+                width: 400px;
+                height: 400px;
             }
 
         </style>
@@ -61,20 +67,17 @@
                 var _url = queue[0];
                 
                 var $img = $('<img/>');
+
+                $img.error(function(){
+                    console.log('image is invalid');
+                    cleanup();
+                });
+
                 $img.load(function(){
-                    
-
-                    var $frame = $('<div/>').css({'opacity':0, 'background-image': 'url(' + _url + ')' })
-
-
+                    var $frame = $('<div/>').css({'opacity':0, 'background-image': 'url(' + _url + ')' });
+                    $('<img src="<?php echo base_url();?>templates/leovative_twitter_tweet.png"/>').appendTo($frame);
                     $frame.prependTo($('#photos')).animate({'opacity':1, 'height':400, 'margin-bottom': '30px'}, 1500, function(){
-                        cleanup();
-                        if(queue.length > 0){
-                            loadQue();
-                        }
-                        else{
-                            queProcess = false;
-                        }
+                        cleanup();                        
                     });
                     
 
@@ -84,15 +87,19 @@
             }
 
             function cleanup(){
-
                 var $photos = $('#photos');
-
                 queue.shift();
-
-
                 if($photos.children().length > 5 ){
                     $photos.children(':last').remove();
                 }
+
+                if(queue.length > 0){
+                    loadQue();
+                }
+                else{
+                    queProcess = false;
+                }
+
             }
 
 
