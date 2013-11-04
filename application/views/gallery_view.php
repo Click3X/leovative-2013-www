@@ -16,18 +16,25 @@
 
         <style type="text/css">
 
+            body{
+                overflow: hidden;
+            }
+
             #photos div{
+                position: relative;
                 display: block;
-                width: 500px;
-                height: 500px;
-                background-size: contain;
+                width: 400px;
+                height: 0;
+                /*margin: 20px;*/
+                border: 1px #222 solid;
+                background-color: #222;
+                background-size: cover;
                 background-position: center center;
             }
 
         </style>
 
-
-        <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="<?php echo base_url();?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
         <script src="http://leo.dev:8080/socket.io/socket.io.js"></script>
         <script>
@@ -60,11 +67,9 @@
                     var $frame = $('<div/>').css({'opacity':0, 'background-image': 'url(' + _url + ')' })
 
 
-                    $frame.prependTo($('#photos')).animate({'opacity':1}, 1000, function(){
+                    $frame.prependTo($('#photos')).animate({'opacity':1, 'height':400, 'margin-bottom': '30px'}, 1500, function(){
                         cleanup();
-
                         if(queue.length > 0){
-                            console.log('load more queue');                
                             loadQue();
                         }
                         else{
@@ -85,7 +90,7 @@
                 queue.shift();
 
 
-                if($photos.children().length > 3 ){
+                if($photos.children().length > 5 ){
                     $photos.children(':last').remove();
                 }
             }
@@ -98,9 +103,6 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-
-        <p>Gallery is on</p>
-        
         <div id="photos"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

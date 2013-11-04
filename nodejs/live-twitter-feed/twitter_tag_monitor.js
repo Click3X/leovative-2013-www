@@ -8,8 +8,8 @@ var twit = new twitter({
   access_token_secret: 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51'
 });
 
-var $tags = ['#c3xdev'];
-// var $tags = ['photo'];
+// var $tags = ['#c3xdev'];
+var $tags = ['photo'];
 var $valid_tags = [];
 
 console.log('--> Twitter hashtag monitor start: ', $tags);
