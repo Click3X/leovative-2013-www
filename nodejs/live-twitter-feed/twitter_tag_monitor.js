@@ -8,6 +8,7 @@ var twit = new twitter({
   access_token_secret: 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51'
 });
 
+
 var $tags = ['#c3xdev', '#test_tag'];
 // var $tags = ['food'];
 var $valid_tags = [];
@@ -25,8 +26,6 @@ function streamListener(stream){
     //Post only if tweet has photo attached
     if(data['entities'] != null){
       if(data['entities']['media'] != undefined){
-        
-
         // $valid_tags = getTags(data['text']);      
 
         if(getTags(data['text'])){
