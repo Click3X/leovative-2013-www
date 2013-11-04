@@ -18,12 +18,18 @@
 
             body{
                 overflow: hidden;
-                padding: 40px 0 0 0;
+                padding: 120px 0 0 0;
                 margin:0;
+                background:url('<?= base_url(); ?>img/cfm_logo.png') no-repeat center 20px;
             }
 
-            h3{
+            h3,h4{
                 text-align: center;
+                line-height: 16px;
+            }
+
+            h4{
+                color: #DD3333;
             }
 
             #photos div{
@@ -136,7 +142,8 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <h3>Twitter Photobooth Gallery</h3>
+        <h3>Twitter Photo Gallery</h3>
+        <h4>#leovative #cfm</h4>
         <div id="photos"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
