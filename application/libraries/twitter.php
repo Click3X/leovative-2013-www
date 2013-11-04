@@ -35,7 +35,7 @@ class Twitter
 		);
 
 		$twitter = new TwitterAPIExchange($settings);
-		echo $twitter->buildOauth($url, $requestMethod)
+		$twitter->buildOauth($url, $requestMethod)
          			 ->setPostfields($postfields)
          			 ->performRequest();
 	}

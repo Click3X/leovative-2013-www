@@ -27,6 +27,7 @@ class Photobooth extends CI_Controller {
 		//Retweet message to user
 		$this->twitter->retweet($image_path[1], $data['screenname'], ' #leovative');
 
+		
 		echo $image_path[2];
 	}
 }
