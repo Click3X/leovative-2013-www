@@ -34,10 +34,11 @@
 
             #photos div{
                 margin-right: 10px;
+                margin-bottom: 10px;
                 position: relative;
                 display: inline-block;
                 width: 195px;
-                height: 0;
+                height: 195px;
                 /*margin: 20px;*/
                 border: 1px #666 solid;
                 background-color: #222;
@@ -53,6 +54,7 @@
 
             #photos div:first-child{
                 width: 400px;
+                height:0;
             }
 
             #photos div:first-child img {
