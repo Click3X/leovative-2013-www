@@ -20,7 +20,7 @@
                 overflow: hidden;
                 padding: 120px 0 0 0;
                 margin:0;
-                background:url('<?= base_url(); ?>img/cfm_logo.png') no-repeat center 20px;
+                background:#eee url('<?= base_url(); ?>img/cfm_logo.png') no-repeat center 20px;
             }
 
             h3,h4{
