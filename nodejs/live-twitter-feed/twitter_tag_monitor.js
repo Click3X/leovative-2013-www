@@ -12,10 +12,10 @@ var twitter = require('ntwitter');
 //Live
 
 var twit = new twitter({
-  consumer_key: 'nboG5rgmh6ynsp3hmxuQA',
-  consumer_secret: 'PW4PofEMgMzdojgkaSTGpOhQ8H372jCjwwZ0snXc8Q',
-  access_token_key: '28368165-AnqlpphRaTNEahOTXTLK80M55tqdH5liBf0q2viuZ',
-  access_token_secret: 'd0Tpd9MS2t3IEks9M7xg1L0bl7pmUcS1ebSMhyw7pdBp5'
+  consumer_key: '7tHnp6M1AJMgkazPhpaqYQ',
+  consumer_secret: 'dRZTWMy3gomxgsQKqrs73srL2hC7zz5tNxmvQa3xK0',
+  access_token_key: '28368165-fDel2ufE958elGmNk73UHib7RjDpQPSm4i6aDj9DU',
+  access_token_secret: 'CzVGueFzGSYQ4zxkwrDOyRAP0t96WEwPf5bQ5vcAceWOL'
 });
 
 

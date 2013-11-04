@@ -28,10 +28,10 @@ define('EMAIL_MESSAGE','Here\'s a new image from Click 3x.');
 // define('TWITTER_TOKEN_SECRET', 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51');
 
 //Live account
-define('TWITTER_CONSUMER_KEY','nboG5rgmh6ynsp3hmxuQA');
-define('TWITTER_CONSUMER_SECRET', 'PW4PofEMgMzdojgkaSTGpOhQ8H372jCjwwZ0snXc8Q');
-define('TWITTER_TOKEN', '28368165-AnqlpphRaTNEahOTXTLK80M55tqdH5liBf0q2viuZ');
-define('TWITTER_TOKEN_SECRET', 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51');
+define('TWITTER_CONSUMER_KEY','7tHnp6M1AJMgkazPhpaqYQ');
+define('TWITTER_CONSUMER_SECRET', 'dRZTWMy3gomxgsQKqrs73srL2hC7zz5tNxmvQa3xK0');
+define('TWITTER_TOKEN', '28368165-fDel2ufE958elGmNk73UHib7RjDpQPSm4i6aDj9DU');
+define('TWITTER_TOKEN_SECRET', 'CzVGueFzGSYQ4zxkwrDOyRAP0t96WEwPf5bQ5vcAceWOL');
 
 define('TWITTER_MENTION_MESSAGE_1', 'Check out all of the #leovative #click3x photos, and visit us at www.clickfiremedia.com');
 define('TWITTER_MENTION_MESSAGE_2', 'Check out all of the Leovative #click3x photos, and visit us at www.clickfiremedia.com');
