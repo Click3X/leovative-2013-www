@@ -33,12 +33,14 @@
             }
 
             #photos {
+                position: relative;
                 width: 420px;
                 margin: 0 auto;
+                padding: 20px 0 0 10px;
             }
 
             #photos div{
-                margin-right: 10px;
+                margin-right: 0px;
                 margin-bottom: 10px;
                 position: relative;
                 display: inline-block;
@@ -102,7 +104,7 @@
                     $frame.prependTo($('#photos')).animate({'opacity':1, 'height':400, 'margin-bottom': '30px'}, 1500, function(){
                         cleanup();
                     });
-                    if(lastFrame !=null) lastFrame.animate({'width':195, 'height':195}, 600);
+                    if(lastFrame !=null) lastFrame.animate({'width':195, 'height':195, 'margin-right': '10px','margin-bottom': '10px'}, 600);
                     lastFrame = $frame;
 
                 });

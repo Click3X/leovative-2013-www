@@ -2,25 +2,25 @@ var http, io;
 var twitter = require('ntwitter');
 
 //Test
-var twit = new twitter({
-  consumer_key: '0Lq12FPHlTgvl2Q5gnHBQ',
-  consumer_secret: 'vjda2nMXZIfCDoSqFcvQIhlUl3CwKq2XvYwHuIo8',
-  access_token_key: '396970137-aHRyebmtXzaBMWCKBHrZiF9qVR67RfYIbqS9guZw',
-  access_token_secret: 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51'
-});
+// var twit = new twitter({
+//   consumer_key: '0Lq12FPHlTgvl2Q5gnHBQ',
+//   consumer_secret: 'vjda2nMXZIfCDoSqFcvQIhlUl3CwKq2XvYwHuIo8',
+//   access_token_key: '396970137-aHRyebmtXzaBMWCKBHrZiF9qVR67RfYIbqS9guZw',
+//   access_token_secret: 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51'
+// });
 
 //Live
-/*
+
 var twit = new twitter({
   consumer_key: 'nboG5rgmh6ynsp3hmxuQA',
   consumer_secret: 'PW4PofEMgMzdojgkaSTGpOhQ8H372jCjwwZ0snXc8Q',
   access_token_key: '28368165-AnqlpphRaTNEahOTXTLK80M55tqdH5liBf0q2viuZ',
   access_token_secret: 'd0Tpd9MS2t3IEks9M7xg1L0bl7pmUcS1ebSMhyw7pdBp5'
 });
-*/
 
-// var $tags = ['#leovative', '#click3x'];
-var $tags = ['#c3xdev', '#test_tag'];
+
+var $tags = ['#leovative', '#click3x'];
+// var $tags = ['#c3xdev', '#test_tag'];
 // var $tags = ['photo'];
 var $valid_tags = [];
 
