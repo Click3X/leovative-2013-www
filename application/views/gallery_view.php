@@ -55,6 +55,8 @@
             #photos div:first-child{
                 width: 400px;
                 height:0;
+                margin-bottom: 40px;
+                margin-right: 40px;
             }
 
             #photos div:first-child img {
