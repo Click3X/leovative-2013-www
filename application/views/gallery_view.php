@@ -32,34 +32,29 @@
                 color: #DD3333;
             }
 
+            #photos {
+                width: 420px;
+                margin: 0 auto;
+            }
+
             #photos div{
                 margin-right: 10px;
                 margin-bottom: 10px;
                 position: relative;
                 display: inline-block;
-                width: 195px;
-                height: 195px;
+                width: 400px;
+                height: 0;
                 /*margin: 20px;*/
                 border: 1px #666 solid;
                 background-color: #222;
                 background-size: cover;
                 background-position: center center;
+
             }
 
             #photos div img {
-                position: absolute;
-                width: 195px;
-                height: 195px;
-            }
-
-            #photos div:first-child{
-                width: 400px;
-                height:0;
-            }
-
-            #photos div:first-child img {
-                width: 400px;
-                height: 400px;
+                width: 100%;
+                height: 100%;
             }
 
         </style>
@@ -84,6 +79,7 @@
             //Animation stuff
             var queue = [];
             var queProcess = false;
+            var lastFrame = null;
 
 
             function loadQue(){
@@ -91,6 +87,8 @@
                 var _url = queue[0];
                 
                 var $img = $('<img/>');
+
+                
 
                 $img.error(function(){
                     console.log('image is invalid');
@@ -100,10 +98,12 @@
                 $img.load(function(){
                     var $frame = $('<div/>').css({'opacity':0, 'background-image': 'url(' + _url + ')' });
                     $('<img src="<?php echo base_url();?>templates/twitter_tweet_template.png"/>').appendTo($frame);
+
                     $frame.prependTo($('#photos')).animate({'opacity':1, 'height':400, 'margin-bottom': '30px'}, 1500, function(){
-                        cleanup();                        
+                        cleanup();
                     });
-                    
+                    if(lastFrame !=null) lastFrame.animate({'width':195, 'height':195}, 600);
+                    lastFrame = $frame;
 
                 });
 
@@ -113,7 +113,8 @@
             function cleanup(){
                 var $photos = $('#photos');
                 queue.shift();
-                if($photos.children().length > 5 ){
+
+                if($photos.children().length > 20 ){
                     $photos.children(':last').remove();
                 }
 
@@ -136,7 +137,7 @@
         <![endif]-->
 
         <h3>Twitter Photo Gallery</h3>
-        <h4>#leovative #cfm</h4>
+        <h4>#leovative #click3x</h4>
         <div id="photos"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

@@ -25,9 +25,9 @@ class Twitter
 		$url = 'https://api.twitter.com/1.1/statuses/update_with_media.json';
 		$requestMethod = 'POST';
 		
-		$mention_to = (!empty($screen_name)) ? '@' . $screen_name . ' ' : '';
+		$mention_to = ($screen_name != '') ? '@' . $screen_name . ' ' : '';
 
-		$status = $mention_to . TWITTER_MENTION_MESSAGE . $hashtag;
+		$status = $mention_to . (($hashtag == '') ? TWITTER_MENTION_MESSAGE_1 : TWITTER_MENTION_MESSAGE_2) ;
 
 		$postfields = array(
     		'media[]' => "@{$image_path}",

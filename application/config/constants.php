@@ -21,12 +21,20 @@ define('EMAIL_TO','cfmdev@icloud.com');
 define('EMAIL_SUBJECT','#leovative');
 define('EMAIL_MESSAGE','Here\'s a new image from Click 3x.');
 
+//Test account
 define('TWITTER_CONSUMER_KEY','0Lq12FPHlTgvl2Q5gnHBQ');
 define('TWITTER_CONSUMER_SECRET', 'vjda2nMXZIfCDoSqFcvQIhlUl3CwKq2XvYwHuIo8');
 define('TWITTER_TOKEN', '396970137-aHRyebmtXzaBMWCKBHrZiF9qVR67RfYIbqS9guZw');
 define('TWITTER_TOKEN_SECRET', 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51');
 
-define('TWITTER_MENTION_MESSAGE', 'This is twitter mention message.');
+//Live account
+// define('TWITTER_CONSUMER_KEY','nboG5rgmh6ynsp3hmxuQA');
+// define('TWITTER_CONSUMER_SECRET', 'PW4PofEMgMzdojgkaSTGpOhQ8H372jCjwwZ0snXc8Q');
+// define('TWITTER_TOKEN', '28368165-AnqlpphRaTNEahOTXTLK80M55tqdH5liBf0q2viuZ');
+// define('TWITTER_TOKEN_SECRET', 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51');
+
+define('TWITTER_MENTION_MESSAGE_1', 'Check out all of the #leovative #click3x photos, and visit us at www.clickfiremedia.com');
+define('TWITTER_MENTION_MESSAGE_2', 'Check out all of the Leovative #click3x photos, and visit us at www.clickfiremedia.com');
 
 define('GA_ACCOUNT', "UA-XXXXX-X");
 

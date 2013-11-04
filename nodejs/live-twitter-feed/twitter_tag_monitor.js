@@ -1,6 +1,7 @@
 var http, io;
 var twitter = require('ntwitter');
 
+//Test
 var twit = new twitter({
   consumer_key: '0Lq12FPHlTgvl2Q5gnHBQ',
   consumer_secret: 'vjda2nMXZIfCDoSqFcvQIhlUl3CwKq2XvYwHuIo8',
@@ -8,9 +9,19 @@ var twit = new twitter({
   access_token_secret: 'zu9vOlkp0DAjRg1W3G6NfyPnaoNs4JeB8Ag3n6E5cQs51'
 });
 
+//Live
+/*
+var twit = new twitter({
+  consumer_key: 'nboG5rgmh6ynsp3hmxuQA',
+  consumer_secret: 'PW4PofEMgMzdojgkaSTGpOhQ8H372jCjwwZ0snXc8Q',
+  access_token_key: '28368165-AnqlpphRaTNEahOTXTLK80M55tqdH5liBf0q2viuZ',
+  access_token_secret: 'd0Tpd9MS2t3IEks9M7xg1L0bl7pmUcS1ebSMhyw7pdBp5'
+});
+*/
 
-// var $tags = ['#c3xdev', '#test_tag'];
-var $tags = ['food'];
+// var $tags = ['#leovative', '#click3x'];
+var $tags = ['#c3xdev', '#test_tag'];
+// var $tags = ['photo'];
 var $valid_tags = [];
 
 console.log('--> Twitter hashtag monitor start: ', $tags);
@@ -28,7 +39,7 @@ function streamListener(stream){
       if(data['entities']['media'] != undefined){
         // $valid_tags = getTags(data['text']);      
 
-        if(getTags(data['text'])){
+        // if(getTags(data['text'])){
 
           console.log('-------------------------');
           console.log('New tweet has photo with tag ' + $tags.toString() + ' is here -- ' + data['created_at']);
@@ -36,11 +47,11 @@ function streamListener(stream){
           // console.log('Content: ' + data['text']);
           // console.log('Image: ' + data['entities']['media'][0].media_url);
           // console.log(util.inspect(data));
-          // postData(data);
+          postData(data);
    
           //Send data through socket
           io.sockets.in('room').emit('new_twit', data['entities']['media'][0].media_url);
-        }
+        // }
       }
     }
     else{
@@ -82,7 +93,7 @@ function getTags(str){
 function postData(data){
   var _parameter = '?tag=leovative' + '&image_url=' + escape(data['entities']['media'][0].media_url) + '&screen_name=' + data['user']['screen_name'];
 
-  console.log(_parameter);
+  // console.log(_parameter);
   http
     .get("http://leo.dev/node/twitternodelistener/" + _parameter, success)
     .on('error', error);
