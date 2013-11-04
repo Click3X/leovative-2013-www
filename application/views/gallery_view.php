@@ -18,9 +18,34 @@
 
             body{
                 overflow: hidden;
+                padding: 40px 0 0 0;
+                margin:0;
+            }
+
+            h3{
+                text-align: center;
             }
 
             #photos div{
+                margin-right: 10px;
+                position: relative;
+                display: inline-block;
+                width: 195px;
+                height: 0;
+                /*margin: 20px;*/
+                border: 1px #666 solid;
+                background-color: #222;
+                background-size: cover;
+                background-position: center center;
+            }
+
+            #photos div img {
+                position: absolute;
+                width: 195px;
+                height: 195px;
+            }
+
+            #photos div:first-child{
                 position: relative;
                 display: block;
                 width: 400px;
@@ -32,7 +57,7 @@
                 background-position: center center;
             }
 
-            #photos div img {
+            #photos div:first-child img {
                 position: absolute;
                 width: 400px;
                 height: 400px;
@@ -75,7 +100,7 @@
 
                 $img.load(function(){
                     var $frame = $('<div/>').css({'opacity':0, 'background-image': 'url(' + _url + ')' });
-                    $('<img src="<?php echo base_url();?>templates/leovative_twitter_tweet.png"/>').appendTo($frame);
+                    $('<img src="<?php echo base_url();?>templates/twitter_tweet_template.png"/>').appendTo($frame);
                     $frame.prependTo($('#photos')).animate({'opacity':1, 'height':400, 'margin-bottom': '30px'}, 1500, function(){
                         cleanup();                        
                     });
@@ -110,6 +135,8 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+
+        <h3>Twitter Photobooth Gallery</h3>
         <div id="photos"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
