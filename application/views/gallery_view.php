@@ -52,19 +52,10 @@
             }
 
             #photos div:first-child{
-                position: relative;
-                display: block;
                 width: 400px;
-                height: 0;
-                /*margin: 20px;*/
-                border: 1px #666 solid;
-                background-color: #222;
-                background-size: cover;
-                background-position: center center;
             }
 
             #photos div:first-child img {
-                position: absolute;
                 width: 400px;
                 height: 400px;
             }
