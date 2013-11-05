@@ -39,7 +39,7 @@ function streamListener(stream){
       if(data['entities']['media'] != undefined){
         // $valid_tags = getTags(data['text']);      
 
-        // if(getTags(data['text'])){
+        if(getTags(data['text'])){
 
           console.log('-------------------------');
           console.log('New tweet has photo with tag ' + $tags.toString() + ' is here -- ' + data['created_at']);
@@ -51,7 +51,7 @@ function streamListener(stream){
    
           //Send data through socket
           io.sockets.in('room').emit('new_twit', data['entities']['media'][0].media_url);
-        // }
+        }
       }
     }
     else{
