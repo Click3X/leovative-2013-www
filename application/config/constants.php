@@ -34,7 +34,7 @@ define('TWITTER_TOKEN', '28368165-fDel2ufE958elGmNk73UHib7RjDpQPSm4i6aDj9DU');
 define('TWITTER_TOKEN_SECRET', 'CzVGueFzGSYQ4zxkwrDOyRAP0t96WEwPf5bQ5vcAceWOL');
 
 define('TWITTER_MENTION_MESSAGE_1', 'Check out all of the #leovative #click3x photos, and visit us at www.clickfiremedia.com');
-define('TWITTER_MENTION_MESSAGE_2', 'Check out all of the Leovative #click3x photos, and visit us at www.clickfiremedia.com');
+define('TWITTER_MENTION_MESSAGE_2', 'Check out all of the #leovative #click3x photos, and visit us at www.clickfiremedia.com');
 
 define('GA_ACCOUNT', "UA-XXXXX-X");
 

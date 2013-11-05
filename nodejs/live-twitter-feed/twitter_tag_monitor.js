@@ -19,7 +19,7 @@ var twit = new twitter({
 });
 
 
-var $tags = ['#leovative', '#click3x'];
+var $tags = ['#leovative', '#photobooth'];
 // var $tags = ['#c3xdev', '#test_tag'];
 // var $tags = ['photo'];
 var $valid_tags = [];
