@@ -19,24 +19,25 @@ define('EMAIL_SUBJECT','#leovative');
 define('EMAIL_MESSAGE','Here\'s a new image from Click 3x.');
 
 //Test account
-define('EMAIL_TO','jaytord@mac.com');
+// define('EMAIL_TO','jaytord@mac.com');
 
-define('TWITTER_CONSUMER_KEY','Xg1ScFBuDZGgdK7b5rhQ');
-define('TWITTER_CONSUMER_SECRET', 'Ufinbnul3tD432XuJFudGmDP2fIESwSyoNndz8P5ng');
-define('TWITTER_TOKEN', '2177078402-Ndal317Y69MDJU1SF51jpHNgKJQwoGtBJQJig6q');
-define('TWITTER_TOKEN_SECRET', 'MjJqv5p2VqK2INCBi2ZyKXHcBFHgTrZyiqMNDG93loS3n');
+// define('TWITTER_CONSUMER_KEY','Xg1ScFBuDZGgdK7b5rhQ');
+// define('TWITTER_CONSUMER_SECRET', 'Ufinbnul3tD432XuJFudGmDP2fIESwSyoNndz8P5ng');
+// define('TWITTER_TOKEN', '2177078402-Ndal317Y69MDJU1SF51jpHNgKJQwoGtBJQJig6q');
+// define('TWITTER_TOKEN_SECRET', 'MjJqv5p2VqK2INCBi2ZyKXHcBFHgTrZyiqMNDG93loS3n');
 
-define('TWITTER_MESSAGE', 'Check out all of the #leovative_dev photos, and visit us at www.clickfiremedia.com');
+// define('TWITTER_MESSAGE', 'Check out all of the #leovative_dev photos, and visit us at www.clickfiremedia.com');
 
 //Live account
-//define('EMAIL_TO','cfmdev@icloud.com');
+define('EMAIL_TO','cfmdev@icloud.com');
 
-// define('TWITTER_CONSUMER_KEY','7tHnp6M1AJMgkazPhpaqYQ');
-// define('TWITTER_CONSUMER_SECRET', 'dRZTWMy3gomxgsQKqrs73srL2hC7zz5tNxmvQa3xK0');
-// define('TWITTER_TOKEN', '28368165-fDel2ufE958elGmNk73UHib7RjDpQPSm4i6aDj9DU');
-// define('TWITTER_TOKEN_SECRET', 'CzVGueFzGSYQ4zxkwrDOyRAP0t96WEwPf5bQ5vcAceWOL');
+define('TWITTER_CONSUMER_KEY','7tHnp6M1AJMgkazPhpaqYQ');
+define('TWITTER_CONSUMER_SECRET', 'dRZTWMy3gomxgsQKqrs73srL2hC7zz5tNxmvQa3xK0');
+define('TWITTER_TOKEN', '28368165-fDel2ufE958elGmNk73UHib7RjDpQPSm4i6aDj9DU');
+define('TWITTER_TOKEN_SECRET', 'CzVGueFzGSYQ4zxkwrDOyRAP0t96WEwPf5bQ5vcAceWOL');
 
-//define('TWITTER_MESSAGE', 'Check out all of the #leovative photos, and visit us at www.clickfiremedia.com');
+define('TWITTER_MESSAGE', 'Check out all of the #leovative photos, and visit us at www.clickfiremedia.com');
+
 
 define('GA_ACCOUNT', "UA-XXXXX-X");
 
