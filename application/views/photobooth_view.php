@@ -41,7 +41,7 @@
             var swfVersionStr = "11.4.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
             var xiSwfUrlStr = "<?= base_url(); ?>swf/playerProductInstall.swf";
-            var flashvars = {base_url:"<?= base_url(); ?>"};
+            var flashvars = {base_url:"http://staging.click3x.com/leovative-2013/"};
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";

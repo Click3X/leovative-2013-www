@@ -27,9 +27,7 @@ class Photobooth extends CI_Controller {
 		//Retweet message to user
 		$this->twitter->retweet($image_path[1], $data['screenname'], true);
 		
-		echo $email_status;
-
-		//echo $image_path[2];
+		echo $image_path[2];
 	}
 
 	public function testmail(){

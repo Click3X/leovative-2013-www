@@ -94,7 +94,7 @@ function postData(data){
 
   // console.log(_parameter);
   http
-    .get("http://leo.dev/node/twitternodelistener/" + _parameter, success)
+    .get("http://staging.click3x.com/leovative-2013/node/twitternodelistener/" + _parameter, success)
     .on('error', error);
 
     function success(res) {
