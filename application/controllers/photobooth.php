@@ -33,9 +33,9 @@ class Photobooth extends CI_Controller {
 	}
 
 	public function testmail(){
-		$headers 	= "From: jaytord@mac.com";
+		$headers 	= "From: jtordsen@click3x.com";
 
-		$status = @mail("jtordsen@click3x.com", "#leovative","test message", $headers); 
+		$status = @mail("jaytord@mac.com", "#leovative","test message", $headers); 
 		echo $status;
 	}
 }
