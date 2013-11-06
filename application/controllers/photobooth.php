@@ -22,12 +22,20 @@ class Photobooth extends CI_Controller {
 		$image_path = $this->composite_image->base64($data);
 
 		//Send mail with attachment
-		$this->send_mail->send($image_path[0]);
+		$email_status = $this->send_mail->send($image_path[0]);
 
 		//Retweet message to user
-		$this->twitter->retweet($image_path[1], $data['screenname'], ' #leovative');
-
+		$this->twitter->retweet($image_path[1], $data['screenname'], true);
 		
-		echo $image_path[2];
+		echo $email_status;
+
+		//echo $image_path[2];
+	}
+
+	public function testmail(){
+		$headers 	= "From: jaytord@mac.com";
+
+		$status = @mail("jtordsen@click3x.com", "#leovative","test message", $headers); 
+		echo $status;
 	}
 }

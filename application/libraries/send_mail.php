@@ -42,13 +42,11 @@ class Send_Mail
 		// send		 
 		$ok = @mail($to, $subject, $message, $headers); 
 		
-		/*
 		if ($ok) { 
 		    echo "<p>mail sent to $to!</p>"; 
 		} else { 
 		    echo "<p>mail could not be sent!</p>"; 
 		}
-		*/
 	}
 	
 }
