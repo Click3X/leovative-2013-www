@@ -15,10 +15,10 @@ class Composite_Image
 		
 			$ts = time();
 			$pngname 		= 'photobooth_' . $ts .".png";
-			$png_filepath 	= base_url().config_item('export_url') . $pngname;
+			$png_filepath 	= config_item('export_url') . $pngname;
 
 			$gifname 		= 'photobooth_' . $ts .".gif";
-			$gif_filepath 	= base_url().config_item('export_url') . $gifname;
+			$gif_filepath 	= config_item('export_url') . $gifname;
 			
 			// Save photobooth image to server
 			$imgdata = base64_decode($data['base64data']);

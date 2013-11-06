@@ -66,7 +66,7 @@
             var socket = io.connect('http://leo.dev:8080');
             
             function onExportComplete(_res){
-                socket.emit('new_photobooth_photo', _res);
+                socket.emit('new_photobooth_photo', _res.replace("leo.dev","staging.click3x.com/leovative-2013"));
             };
         </script>
 
