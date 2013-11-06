@@ -36,12 +36,12 @@
             
         <script type="text/javascript" src="<?= base_url(); ?>js/swfobject.js"></script>
         <script type="text/javascript">
-            var base_url = "<?= base_url(); ?>";
+            var base_url = "http://staging.click3x.com/leovative-2013/";
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.4.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
             var xiSwfUrlStr = "<?= base_url(); ?>swf/playerProductInstall.swf";
-            var flashvars = {base_url:"http://staging.click3x.com/leovative-2013/"};
+            var flashvars = {base_url:base_url};
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";
@@ -66,7 +66,8 @@
             var socket = io.connect('http://leo.dev:8080');
             
             function onExportComplete(_res){
-                socket.emit('new_photobooth_photo', _res.replace("leo.dev","staging.click3x.com/leovative-2013"));
+                console.log(_res.replace("leo.dev","staging.click3x.com/leovative-2013"));
+                socket.emit('new_photobooth_photo', base_url + _res);
             };
         </script>
 
