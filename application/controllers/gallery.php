@@ -2,8 +2,22 @@
 
 class Gallery extends CI_Controller {
 
-	public function index()
+	public function index($ext)
 	{
-		$this->load->view('gallery_view');
+		if(isset($ext)){
+			
+
+			$exportDir 	= getcwd() . "/export";
+			$data 		= array(	"images" => scandir($exportDir),
+									"ext"	=> $ext
+
+							);
+
+			$this->load->view('ext_view', $data);
+		}else{
+
+			$this->load->view('gallery_view');
+		}
 	}
+
 }
