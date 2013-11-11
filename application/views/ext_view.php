@@ -34,24 +34,21 @@
 
             #photos {
                 position: relative;
-            /*    width: 420px;*/
-                margin: 0 auto;
+                margin: auto;
                 padding: 20px 0 0 10px;
+                text-align: center;
             }
 
-            #photos div{
+            #photos div.photo{
                 margin-right: 0px;
                 margin-bottom: 10px;
                 position: relative;
                 display: inline-block;
                 width: 400px;
-           /*     height: 0;*/
-                /*margin: 20px;*/
                 border: 1px #666 solid;
                 background-color: #222;
                 background-size: cover;
                 background-position: center center;
-
             }
 
             #photos div img {
@@ -59,33 +56,53 @@
                 height: 100%;
             }
 
+            div.play_button{
+                width: 100%;
+                height: 100%;
+                background: rgba(255,0,0,.4);
+                position: absolute;
+                cursor: pointer;
+                z-index: 2;
+            }
+
+            div.gif_holder{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 1;
+            }
+
+            div.gif_holder img{
+                width: 100%;
+                height: 100%;
+            }
+
         </style>
 
         <script src="<?php echo base_url();?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+        <script type="text/javascript">
+            var base_url = "<?php echo base_url();?>";
+        </script>
  </head>
     <body>
 
         <h3>Twitter Photo Gallery</h3>
         <h4>#leovative #click3x</h4>
         <div id="photos">
-
-
-<?php 
-
-//loop through files in export directory
-foreach ($images as $img): 
-
-//make sure the extension we want is in the filename
-if (strpos($img, $ext)): 
-
-//create src string using base url and filename	
-$src = base_url()."/export/".$img; ?>
-
-
-<div><img src="<?= $src; ?>" /></div>
-
-<?php endif; endforeach; ?>
-
+            <?php  foreach ($images as $img): if (strpos($img, ".jpg") && strpos($img, "tweet")): 
+                $src = base_url()."/export/".$img; 
+                $start_id = strripos($img,"_")+1;
+                $end_id = strpos($img, ".");
+                $id = substr($img, $start_id, $end_id-$start_id ); 
+                $gif_filename = "photobooth_".$id.".gif";
+            ?>
+            <div class="photo">
+                <div class="play_button"d data-gif-filename="<?= $gif_filename; ?>"></div>
+                <div class="gif_holder"></div>
+                <img src="<?= $src; ?>" />
+            </div>
+            <?php endif; endforeach; ?>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
