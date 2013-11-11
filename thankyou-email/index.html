@@ -62,6 +62,14 @@
           Bring inline: Yes. */
           a {color: #FF0000;}
 
+          .full_width_text{
+               max-width: 330px;
+               margin:auto;
+          }
+
+          .small_center{
+                max-width: 330px;
+          }
 
           /***************************************************
           ****************************************************
@@ -83,12 +91,23 @@
                     pointer-events: auto;
                     cursor: default;
                }
+          }
 
-               p.full_width_text{
-                    padding:4px 0px;
+          @media (max-width: 440px){
+               .profile_pic{
+                    width: 140px;
                }
           }
 
+          @media (max-width: 380px){
+               .profile_pic{
+                    width: 110px;
+               }
+               .full_width_text{
+                   font-size: 15px;
+                   padding-bottom: 10px;
+               }
+          }
 
           @media (max-width: 599px){
                table{
@@ -104,18 +123,14 @@
                }
                .small_center{
                     text-align: center;
-               }
-               p.full_width_text{
-                    padding:4px 10px;
+                    margin: auto;
                }
           }
+             
 
           @media (min-width: 600px){
                table{
                     width:600px;
-               }
-               p.full_width_text{
-                    padding:4px 100px;
                }
           }  
 
@@ -188,7 +203,7 @@
      <table cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
      <tr>
           <td valign="top"> 
-               <table cellpadding="0" cellspacing="0" border="0" align="center" style="background:#FFF url('images/bg.jpg') no-repeat; font-size:12px; line-height:13px; border:solid #000 3px; border-top:none;">
+               <table cellpadding="0" cellspacing="0" border="0" align="center" style="background:#e2e2e2 url('images/bg.jpg') no-repeat; font-size:12px; line-height:13px; border:solid #000 3px; border-top:none;">
                     <tr>
                          <td colspan="5" style="text-align:center; padding-top:10px;">
                               <a href="http://clickfiremobile.com"><img alt="ClickFire Mobile" class="" src="images/cfm_leo_logo.png" width="292"></a>
@@ -197,14 +212,14 @@
                     <tr>
                          <td width="26"></td>
                          <td colspan="3" style="color:#222; text-align:center; padding-top:4px;">
-                              <h1 style="font-size:29px; padding:18px; line-height:34px;">[firstname,fallback=Hello],<br />Thank you for visiting us at Leovative</h1>
+                              <h1 style="font-size:29px; padding:18px; line-height:34px;"><!-- [firstname,fallback=Hello] -->,<br />Thank you for visiting us at Leovative</h1>
                          </td>
                          <td width="26"></td>
                     </tr>
                     <tr>
                          <td width="26"></td>
-                         <td colspan="3" style="line-height:20px; font-size:16px;">
-                              <a href="http://click3x.com/leovative-2013/gallery/all"><img alt="ClickFire Media Leovative 2013" style="padding-bottom:20px;" align="right" class="image_fix full" src="images/screenshot.jpg" width="360"></a>
+                         <td colspan="3" style="line-height:20px; font-size:16px; padding-bottom:20px;">
+                              <a href="http://click3x.com/leovative-2013/gallery/all"><img alt="ClickFire Media Leovative 2013" style="padding-bottom:20px;" align="right" class="image_fix full" src="images/sample.gif" width="360"></a>
                               <p class="small_center">We've put together a gallery of the photos everyone took at our photo booth.</p>
                               <p class="small_center image_fix">
                                    <a href="http://clickfiremobile.com" title="View All The Photos" target="_blank"><img style="padding-top:20px;" src="images/view_photos.gif" width="143"/></a>
@@ -221,16 +236,16 @@
                     </tr>
                     <tr>
                          <td width="26" style=""></td>
-                         <td style="text-align:center;">
+                         <td style="text-align:center; vertical-align:top;">
                               <a href="http://click3x.com/people#/people/_all/444450" title="Helen O'Brien" target="_blank">
-                                   <img align="center" alt="Helen O'Brien" class="full" src="images/ho.png"></a>
+                                   <img align="center" alt="Helen O'Brien" class="profile_pic" src="images/ho.png"></a>
                               <h3 style="line-height:14px; margin-top:2px; margin-bottom:3px;"><a href="http://click3x.com/people#/people/_all/444450" title="Helen O'Brien" target="_blank" style="color:#771111;">Helen O'Brien</a></h3>
                               <p style="margin:0;">Midwest Representative</p>
                               <p style="margin:0;"><a style="text-decoration:none; color:#DD0000;" href="mailto:helen@click3x.com">helen@click3x.com</a></p>
                          </td>
                          <td width="26" style=""></td>
-                         <td style="text-align:center;">
-                              <a href="http://click3x.com/people#/people/_all/4440" title="Peter Corbett" target="_blank"><img align="center" alt="Peter Corbett" class="full" src="images/pc.png"></a>
+                         <td style="text-align:center; vertical-align:top;">
+                              <a href="http://click3x.com/people#/people/_all/4440" title="Peter Corbett" target="_blank"><img align="center" alt="Peter Corbett" class="profile_pic" src="images/pc.png"></a>
                               <h3 style="line-height:14px; margin-top:2px; margin-bottom:3px;"><a href="http://click3x.com/people#/people/_all/4440" title="Peter Corbett" target="_blank" style="color:#771111;">Peter Corbett</a></h3>
                               <p style="margin:0;">President/Partner</p>
                               <p style="margin:0;"><a style="text-decoration:none; color:#DD0000;" href="mailto:pc@click3x.com">pc@click3x.com</a></p>
@@ -238,23 +253,17 @@
                          <td width="26" style=""></td>
                     </tr>
                     <tr>
-                         <td width="26" height="1" style=""></td>
-                         <td style="text-align:center;">
-                              <a href="http://click3x.com/people#/people/_all/444310" title="Ephraim Kehlmann" target="_blank"><img alt="Ephraim Kehlmann" class="full" src="images/ek.png"></a>
+                         <td colspan="5" style="text-align:center; vertical-align:top;">
+                              <a href="http://click3x.com/people#/people/_all/444310" title="Ephraim Kehlmann" target="_blank"><img alt="Ephraim Kehlmann" class="profile_pic" src="images/ek.png"></a>
                               <h3 style="line-height:14px; margin-top:2px; margin-bottom:3px;"><a href="http://click3x.com/people#/people/_all/444310" title="Ephraim Kehlmann" target="_blank" style="color:#771111;">Ephraim Kehlmann</a></h3>
                               <p style="margin:0;">Head of Production</p>
                               <p style="margin:0;"><a style="text-decoration:none; color:#DD0000;" href="mailto:ephraim@click3x.com">ephraim@click3x.com</a></p>
                          </td>
-                         <td width="26" height="1" style=""></td>
-                         <td style="padding-bottom:20px; ">
-                              <a href="http://clickfiremedia.com/_all/clickfire_mobile#/_all/clickfire_mobile/112" title="Blank" target="_blank"><img alt="blank" class="image_fix full" src="images/blank.gif"></a>
-                         </td>
-                         <td width="26" height="1"></td>
                     </tr>
                     <tr>
                          <td width="26" height="1"></td>
                          <td colspan="3" style="color:#555; text-align:center; padding-top:10px; padding-bottom:10px;">
-                              <p><img class="full" src="images/check_out_our_work.gif" width="369" /></p>
+                              <p><a href="http://clickfiremedia.com"><img class="full" src="images/check_out_our_work.gif" width="369" /></a></p>
                          </td>
                          <td width="26" height="1"></td>
                     </tr>
