@@ -59,7 +59,7 @@
             div.play_button{
                 width: 100%;
                 height: 100%;
-                background: rgba(255,0,0,0);
+                background:rgba(255,0,0,0) url('../img/play.png') center center no-repeat;
                 position: absolute;
                 cursor: pointer;
                 z-index: 2;
@@ -75,6 +75,10 @@
             div.gif_holder img{
                 width: 100%;
                 height: 100%;
+            }
+
+            #photos div.photo.playing div.play_button{
+                visibility: hidden;
             }
 
         </style>
@@ -98,7 +102,7 @@
                 $gif_filename = "photobooth_".$id.".gif";
             ?>
             <div class="photo">
-                <div class="play_button"d data-gif-filename="<?= $gif_filename; ?>"></div>
+                <div class="play_button" data-gif-filename="<?= $gif_filename; ?>"></div>
                 <div class="gif_holder"></div>
                 <img src="<?= $src; ?>" />
             </div>
