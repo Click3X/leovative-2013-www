@@ -59,7 +59,7 @@
             div.play_button{
                 width: 100%;
                 height: 100%;
-                background: rgba(255,0,0,.4);
+                background: rgba(255,0,0,0);
                 position: absolute;
                 cursor: pointer;
                 z-index: 2;
