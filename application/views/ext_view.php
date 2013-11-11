@@ -44,7 +44,7 @@
                 margin-bottom: 10px;
                 position: relative;
                 display: inline-block;
-                width: 400px;
+                width: 300px;
                 border: 1px #666 solid;
                 background-color: #222;
                 background-size: cover;
@@ -53,12 +53,11 @@
 
             #photos div img {
                 width: 100%;
-                height: 100%;
             }
 
             div.play_button{
-                width: 100%;
-                height: 100%;
+                width: 300px;
+                height: 300px;
                 background:rgba(255,0,0,0) url('../img/play.png') center center no-repeat;
                 position: absolute;
                 cursor: pointer;
@@ -66,15 +65,15 @@
             }
 
             div.gif_holder{
-                width: 100%;
-                height: 100%;
+                width: 300px;
+                height: 300px;
                 position: absolute;
                 z-index: 1;
             }
 
             div.gif_holder img{
-                width: 100%;
-                height: 100%;
+               width: 300px;
+                height: 300px;
             }
 
             #photos div.photo.playing div.play_button{
